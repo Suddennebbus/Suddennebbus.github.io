@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next muse use-motion" lang="">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -79,15 +79,13 @@
 
 
 
-<meta name="description" content="之前我们学习了一种分类方法——K近邻法(KNN)，今天我们再学习一种更常用的分类方法，朴素贝叶斯法(Naive Bayes)">
 <meta name="keywords" content="统计学习方法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="统计学习方法 | 朴素贝叶斯法">
 <meta property="og:url" content="http://yoursite.com/2018/05/25/统计学习方法-朴素贝叶斯法/index.html">
 <meta property="og:site_name" content="DengSha">
-<meta property="og:description" content="之前我们学习了一种分类方法——K近邻法(KNN)，今天我们再学习一种更常用的分类方法，朴素贝叶斯法(Naive Bayes)">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-784876ce02ed4b0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-e2c41bac954de01f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-9a2e2d1a2501d3f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-87e90cb65e0b2dc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-7925a9c09ec7460d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -98,11 +96,10 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-a29f06461a90977d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-9c63df018116e57f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-af315cf18beb7398.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-05-25T07:04:01.928Z">
+<meta property="og:updated_time" content="2018-05-25T07:34:41.011Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计学习方法 | 朴素贝叶斯法">
-<meta name="twitter:description" content="之前我们学习了一种分类方法——K近邻法(KNN)，今天我们再学习一种更常用的分类方法，朴素贝叶斯法(Naive Bayes)">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4263204-784876ce02ed4b0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4263204-e2c41bac954de01f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -150,7 +147,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
 
   
   
@@ -329,10 +326,6 @@
           
 
           
-              <div class="post-description">
-                  之前我们学习了一种分类方法——K近邻法(KNN)，今天我们再学习一种更常用的分类方法，朴素贝叶斯法(Naive Bayes)
-              </div>
-          
 
         </div>
       </header>
@@ -347,7 +340,8 @@
       
 
       
-        <p><img src="https://upload-images.jianshu.io/upload_images/4263204-784876ce02ed4b0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+        <p><img src="https://upload-images.jianshu.io/upload_images/4263204-e2c41bac954de01f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<a id="more"></a>
 <h4 id="01-分类方法"><a href="#01-分类方法" class="headerlink" title="01 分类方法"></a>01 分类方法</h4><p>之前我们学习了一种分类方法——<a href="https://www.jianshu.com/p/73a0a3b229e6" target="_blank" rel="noopener">K近邻法(KNN)</a>，今天我们再学习一种更常用的分类方法</p>
 <blockquote>
 <p>朴素贝叶斯法</p>
@@ -862,7 +856,7 @@
   
 
   
-  <script type="text/javascript" color="0,0,255" opacity='0.5' zIndex="-2" count="50" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  <script type="text/javascript" color="0,0,255" opacity='0.3' zIndex="-2" count="30" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
   
   
     <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
