@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_four.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_four.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="手里有一份A市近两年来共享单车的租车数据，字段丰富，可挖掘的东西蛮多的，真是让人蠢蠢欲动~~">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python | 共享单车需求分析">
+<meta property="og:url" content="http://yoursite.com/2018/05/25/Python-共享单车需求分析/index.html">
+<meta property="og:site_name" content="DengSha">
+<meta property="og:description" content="手里有一份A市近两年来共享单车的租车数据，字段丰富，可挖掘的东西蛮多的，真是让人蠢蠢欲动~~">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-08aab9242cc99053.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-a542744825c76083.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-b5ec04fbe65cc426.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-1c142c98584dfdbf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-f2e5ce0c93d85353.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-0cedf34606e85b51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-91720540ef182096.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-22b81a811d34044b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-d68b3bef8f5ff9f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-fac8790f0164ff25.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-546d6fce06269111.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-bb5357d7358585a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-05-25T07:12:40.003Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python | 共享单车需求分析">
+<meta name="twitter:description" content="手里有一份A市近两年来共享单车的租车数据，字段丰富，可挖掘的东西蛮多的，真是让人蠢蠢欲动~~">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4263204-08aab9242cc99053.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/25/Python-共享单车需求分析/"/>
+
+
+
+
+
+  <title>Python | 共享单车需求分析 | DengSha</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DengSha</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Data Hero</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/25/Python-共享单车需求分析/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Deng Sha">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DengSha">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python | 共享单车需求分析</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-25T15:07:35+08:00">
+                2018-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2,610
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  11
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  手里有一份A市近两年来共享单车的租车数据，字段丰富，可挖掘的东西蛮多的，真是让人蠢蠢欲动~~
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://upload-images.jianshu.io/upload_images/4263204-08aab9242cc99053.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="01-目的"><a href="#01-目的" class="headerlink" title="01 目的"></a>01 目的</h3><p>手里有一份A市近两年来共享单车的租车数据，字段丰富，可挖掘的东西蛮多的，真是让人蠢蠢欲动~~</p>
+<p>那么今天我们就来挖一挖这份数据，看看是<strong>哪些因素影响着人们的租车需求。</strong></p>
+<p>先给出数据各字段以及含义，先思考一下，如果是你，你会如何分析？</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-a542744825c76083.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="02-数据清洗"><a href="#02-数据清洗" class="headerlink" title="02 数据清洗"></a>02 数据清洗</h3><p>拿到任何数据，第一件事是思考数据价值，思考你分析这份数据的目的，然后呢。</p>
+<p>当然是数据的观察和清洗，不干净的数据分析出来的结果你信么？</p>
+<blockquote>
+<p>老套路，数据观察3步走：</p>
+<ol>
+<li>数据大小 (df.shape)</li>
+<li>各字段数据类型、缺失值 (df.info)</li>
+<li>head、tail数据 (df.head)</li>
+</ol>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-b5ec04fbe65cc426.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>可以看到，数据共10886行，12列，各字段均无缺失值（真是棒棒哒数据集呐）</p>
+<p>再来看看数据表结构</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-1c142c98584dfdbf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>可以看到， datetime字段是日期格式，可以进一步处理得到年月日时间周几等信息；气温、体表温度、湿度、风速字段是连续变量，需要离散化处理后分析。</p>
+<h3 id="03-数据处理"><a href="#03-数据处理" class="headerlink" title="03 数据处理"></a>03 数据处理</h3><p>刚才提到，datetime字段可以进一步处理，得到年、月、日、时、周几等信息，从而进一步结合时间信息来分析A市共享单车需求。</p>
+<p><strong>下面我们针对日期型变量进行处理。</strong></p>
+<p>主要思路：分裂split，切片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 自定义函数获取日期</span><br><span class="line">def get_date(x):</span><br><span class="line">    return x.split()[0]</span><br><span class="line"># 对指定字段应用自定义函数apply()</span><br><span class="line">BikeData[&quot;date&quot;]=BikeData.datetime.apply(get_date)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 自定义函数获取时间</span><br><span class="line">def get_hour(x):</span><br><span class="line">    hour=x.split()[1].split(&quot;:&quot;)[0]</span><br><span class="line">    int_hour=int(hour) # 注意，这里的hour要转换为数值型，因为字符串型在排序时不按数值型排序规则来</span><br><span class="line">    return int_hour</span><br><span class="line"></span><br><span class="line">BikeData[&quot;hour&quot;]=BikeData.datetime.apply(get_hour)</span><br></pre></td></tr></table></figure>
+<p>接下来我们想得到日期对应的星期数，思路是将字符串格式的日期通过datetime包中的strptime函数转换为日期时间类型，然后通过.weekday获取对应的星期数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def get_weekday(x):</span><br><span class="line">    dateStr=x.split()[0]</span><br><span class="line">    dateDT=datetime.strptime(dateStr,&quot;%Y/%m/%d&quot;)</span><br><span class="line">    week_day=dateDT.weekday()</span><br><span class="line">    return week_day</span><br><span class="line"></span><br><span class="line">BikeData[&quot;weekday&quot;]=BikeData.datetime.apply(get_weekday)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 同样的，自定义函数获取日期对应的月份</span><br><span class="line"># 这里也可以使用切片+split的方法得到月份  x.split()[0].split(&quot;/&quot;)[1]</span><br><span class="line">def get_month(x):</span><br><span class="line">    dateStr=x.split()[0]</span><br><span class="line">    dateDT=datetime.strptime(dateStr,&quot;%Y/%m/%d&quot;)</span><br><span class="line">    month=dateDT.month</span><br><span class="line">    return month</span><br><span class="line"></span><br><span class="line">BikeData[&quot;month&quot;]=BikeData.datetime.apply(get_month)</span><br></pre></td></tr></table></figure>
+<p>好了，到这里，日期型变量处理完毕，现在的数据表结构是这样的，我们可以正式开始挖掘分析了。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-f2e5ce0c93d85353.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="04-数据挖掘"><a href="#04-数据挖掘" class="headerlink" title="04 数据挖掘"></a>04 数据挖掘</h3><h5 id="4-1-相关性分析"><a href="#4-1-相关性分析" class="headerlink" title="4.1 相关性分析"></a>4.1 相关性分析</h5><p>我们先来看一看各字段之间的相关性，其中：</p>
+<ul>
+<li>相关系数介于-1,1之间</li>
+<li>负数表示负相关，正数表示正相关</li>
+<li>绝对值越大，关系越强</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># df.corr()计算dataframe中各字段的相关系数</span><br><span class="line">correlation=BikeData[[&quot;season&quot;,&quot;holiday&quot;,&quot;workingday&quot;,&quot;weather&quot;,&quot;temp&quot;,&quot;atemp&quot;,&quot;humidity&quot;,&quot;windspeed&quot;,&quot;casual&quot;,&quot;registered&quot;,&quot;count&quot;]].corr()</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-0cedf34606e85b51.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>好像有点让人眼花缭乱，那么我们就用热地图可视化相关系数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fig=plt.figure(figsize=(12,12))</span><br><span class="line"># 使用热地图(heat map)更直观地展示系数矩阵情况</span><br><span class="line"># vmax设定热地图色块的最大区分值</span><br><span class="line"># square设定图片为正方形与否</span><br><span class="line"># annot设定是否显示每个色块的系数值</span><br><span class="line">sns.heatmap(correlation,vmax=1,square=True,annot=True)</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-91720540ef182096.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>可以看到，</strong></p>
+<ul>
+<li>count（租车人数）：温度、体感温度与租车人数正相关-寒冷抑制租车需求；湿度与人数负相关-雨雪天气抑制租车需求；注册人数、非注册人数与租车人数强正相关-转化率问题，用户越多，租车需求越多；</li>
+<li>registered（注册用户数）：温度高、工作日，刺激民众成为注册用户-租车的需求可能更多的是非寒冷天气的通勤；非注册用户与注册用户数强正相关-先试用再转化，是一种商业模式；</li>
+<li>temp（气温）：气温和体温强正相关-当然气温越高体温越高</li>
+<li>season（季节）：春季更干燥、低温</li>
+</ul>
+<h5 id="4-2-可视化分析"><a href="#4-2-可视化分析" class="headerlink" title="4.2 可视化分析"></a>4.2 可视化分析</h5><p>接下来我们通过可视化来观察租车需求的相关因素。</p>
+<h6 id="4-2-1-租车人数在各分类变量下的箱线图"><a href="#4-2-1-租车人数在各分类变量下的箱线图" class="headerlink" title="4.2.1 租车人数在各分类变量下的箱线图"></a>4.2.1 租车人数在各分类变量下的箱线图</h6><ul>
+<li>租车人数箱线图（小时为单位）</li>
+<li>各月份租车人数箱线图</li>
+<li>各星期数租车人数箱线图</li>
+<li>各小时（0~23时）租车人数箱线图</li>
+<li>各季节租车人数箱线图</li>
+<li>各天气租车人数箱线图</li>
+<li>节假日与否的租车人数箱线图</li>
+<li>周末与否的租车人数箱线图</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"># 绘制多图</span><br><span class="line">plt.style.use(&quot;ggplot&quot;)</span><br><span class="line">fig=plt.figure(figsize=(16,24))</span><br><span class="line"></span><br><span class="line"># 设置图像大标题</span><br><span class="line">fig.suptitle(&quot;ShareBike Analysis&quot;,fontsize=16,fontweight=&quot;bold&quot;)</span><br><span class="line"></span><br><span class="line"># 添加第一个子图</span><br><span class="line">ax1=fig.add_subplot(4,2,1)</span><br><span class="line">sns.boxplot(data=BikeData,y=&quot;count&quot;)</span><br><span class="line">plt.title(&quot;box plot on count&quot;)</span><br><span class="line">plt.ylabel(&quot;Count&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 添加第二个子图</span><br><span class="line">ax2=fig.add_subplot(4,2,2)</span><br><span class="line">sns.boxplot(data=BikeData,x=&quot;month&quot;,y=&quot;count&quot;,hue=&quot;workingday&quot;)</span><br><span class="line">ax2.set(ylabel=&quot;Count&quot;,xlabel=&quot;Month&quot;,title=&quot;box plot on count across month&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 添加第三个子图</span><br><span class="line">ax3=fig.add_subplot(4,2,3)</span><br><span class="line">sns.boxplot(data=BikeData,x=&quot;weekday&quot;,y=&quot;count&quot;)</span><br><span class="line">ax3.set(ylabel=&quot;Count&quot;,xlabel=&quot;Weekday&quot;,title=&quot;box plot on count across weekday&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 添加第四个子图</span><br><span class="line">ax4=fig.add_subplot(4,2,4)</span><br><span class="line">sns.boxplot(data=BikeData,x=&quot;hour&quot;,y=&apos;count&apos;)</span><br><span class="line"></span><br><span class="line"># 下面两句代码与ax2.set()效果一样</span><br><span class="line"># plt.title(&quot;box plot on count&quot;)</span><br><span class="line"># plt.ylabel(&quot;Count&quot;)</span><br><span class="line">ax4.set(ylabel=&quot;Count&quot;,xlabel=&quot;Hour&quot;,title=&quot;box plot on count aross hours&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 添加第五个子图</span><br><span class="line">ax5=fig.add_subplot(4,2,5)</span><br><span class="line">sns.boxplot(data=BikeData,x=&quot;season&quot;,y=&quot;count&quot;,hue=&quot;weather&quot;)</span><br><span class="line">ax5.set(ylabel=&quot;Count&quot;,xlabel=&quot;Season&quot;,title=&quot;box plot on count across season&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 添加第六个子图</span><br><span class="line">ax6=fig.add_subplot(4,2,6)</span><br><span class="line">sns.boxplot(data=BikeData,x=&quot;weather&quot;,y=&quot;count&quot;)</span><br><span class="line">ax6.set(ylabel=&quot;Count&quot;,xlabel=&quot;Weather&quot;,title=&quot;box plot on count across weather&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 添加第七个子图</span><br><span class="line">ax7=fig.add_subplot(4,2,7)</span><br><span class="line">sns.boxplot(data=BikeData,x=&quot;holiday&quot;,y=&quot;count&quot;)</span><br><span class="line">ax7.set(ylabel=&quot;Count&quot;,xlabel=&quot;Holiday&quot;,title=&quot;box plot on count across holiday&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 添加第八个子图</span><br><span class="line">ax8=fig.add_subplot(4,2,8)</span><br><span class="line">sns.boxplot(data=BikeData,x=&quot;workingday&quot;,y=&quot;count&quot;)</span><br><span class="line">ax8.set(ylabel=&quot;Count&quot;,xlabel=&quot;Workingday&quot;,title=&quot;box plot on count across workingday&quot;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-22b81a811d34044b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>可以看到，</strong></p>
+<ul>
+<li>每小时的租车人数中位数在150上下；</li>
+<li>寒冷季节（1,2,12月），工作日租车人数高于非工作日，看来寒冷季节租车以通勤为主，那么冷的天，周末当然是窝在家里啦；温暖、凉爽季节（5-11月），非工作日租车人数高于工作日，看来这些季节租车以游玩为主，春暖花开、夏日蝉鸣、秋高气爽，当然要骑车车出去玩耍啦；</li>
+<li>租车高峰时段为早上的7、8、9点和下午的5、6、7点，正好是上下班高峰期；</li>
+<li>春季租车人数少，可能是乍暖还寒，人们不愿意出门，并且这段时间正好赶上中国春节，大城市人口外流，租车需求减少；</li>
+<li>天气越好，租车的人越多，暴雨暴雪一般没有人租车</li>
+</ul>
+<h6 id="4-2-2-连续变量与租车人数的关系"><a href="#4-2-2-连续变量与租车人数的关系" class="headerlink" title="4.2.2 连续变量与租车人数的关系"></a>4.2.2 连续变量与租车人数的关系</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 连续变量离散化，使用pd.cut分为5段</span><br><span class="line">BikeData[&quot;temp_band&quot;]=pd.cut(BikeData[&quot;temp&quot;],4)</span><br><span class="line">BikeData[&quot;humidity_band&quot;]=pd.cut(BikeData[&quot;humidity&quot;],5)</span><br><span class="line">BikeData[&quot;windspeed_band&quot;]=pd.cut(BikeData[&quot;windspeed&quot;],5)</span><br></pre></td></tr></table></figure>
+<p>连续变量离散化后，我们来看看气温、湿度、天气对租车人数的影响吧</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 将季节1234对应到春夏秋冬（使用映射函数.map）</span><br><span class="line">BikeData[&quot;season_word&quot;]=BikeData[&quot;season&quot;].map(&#123;1:&quot;Spring&quot;,2:&quot;Summer&quot;,3:&quot;Autumn&quot;,4:&quot;Winter&quot;&#125;)</span><br><span class="line"></span><br><span class="line">sns.FacetGrid(data=BikeData,row=&quot;humidity_band&quot;,aspect=2.2).\</span><br><span class="line">map(sns.barplot,&quot;temp_band&quot;,&quot;count&quot;,&quot;season_word&quot;,hue_order=[&quot;Spring&quot;,&quot;Summer&quot;,&quot;Autumn&quot;,&quot;Winter&quot;],palette=&quot;deep&quot;,ci=None).\</span><br><span class="line">add_legend()</span><br><span class="line">plt.xticks(rotation=60)</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-d68b3bef8f5ff9f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>可以看到，</strong></p>
+<ul>
+<li>气温低于10，高于30度，租车人数较少-太冷太热都会抑制租车需求</li>
+<li>空气湿度越高，租车人数越少-干爽的天气骑车比较舒适</li>
+<li>干燥的夏天、湿润的冬天，秋天是租车需求比较旺盛的时期</li>
+</ul>
+<h6 id="4-2-3-不同季节下，各小时段的租车人数情况"><a href="#4-2-3-不同季节下，各小时段的租车人数情况" class="headerlink" title="4.2.3 不同季节下，各小时段的租车人数情况"></a>4.2.3 不同季节下，各小时段的租车人数情况</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plt.style.use(&quot;ggplot&quot;)</span><br><span class="line"></span><br><span class="line">sns.FacetGrid(data=BikeData,size=6,aspect=1.5).\</span><br><span class="line">map(sns.pointplot,&quot;hour&quot;,&quot;count&quot;,&quot;season_word&quot;,hue_order=[&quot;Spring&quot;,&quot;Summer&quot;,&quot;Autumn&quot;,&quot;Winter&quot;],paletter=&quot;deep&quot;,ci=None).\</span><br><span class="line">add_legend()</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-fac8790f0164ff25.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>可以看到，</strong></p>
+<ul>
+<li>不论季节，每天早晨7-9点，傍晚16-19点是租车高峰期，分别在8点和17点达到时段峰值</li>
+<li>工作时段的租车人数处于一天中的中间水平，夜幕降临后，租车人数逐渐减少-夜晚寒冷、阴暗，骑车不便利</li>
+<li>春季用车人数总体较少，夏秋季最多</li>
+</ul>
+<h6 id="4-2-4-工作日与否，各小时租车人数情况"><a href="#4-2-4-工作日与否，各小时租车人数情况" class="headerlink" title="4.2.4 工作日与否，各小时租车人数情况"></a>4.2.4 工作日与否，各小时租车人数情况</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sns.FacetGrid(data=BikeData,size=6,aspect=1.5).\</span><br><span class="line">map(sns.pointplot,&quot;hour&quot;,&quot;count&quot;,&quot;workingday&quot;,hue_order=[1,0],paletter=&quot;deep&quot;,ci=None).\</span><br><span class="line">add_legend()</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-546d6fce06269111.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>可以看到，</strong></p>
+<ul>
+<li>是否是工作日，对于用车高峰时段的影响非常大</li>
+<li>工作日的租车高峰时段非常明显，处于7-9点，16-19点-通勤为主</li>
+<li>非工作日租车高峰时段特征较为平缓，从上午10点租车人数逐渐增多，到晚上8点后，租车人数回到低峰水平-非工作日主要用于休闲代步、短途旅游等（大家起床都很迟嘛）</li>
+</ul>
+<h6 id="4-2-5-不同天气情况下，各月份的租车人数"><a href="#4-2-5-不同天气情况下，各月份的租车人数" class="headerlink" title="4.2.5 不同天气情况下，各月份的租车人数"></a>4.2.5 不同天气情况下，各月份的租车人数</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">BikeData[&quot;weather_word&quot;]=BikeData[&quot;weather&quot;].map(&#123;1:&quot;sunny&quot;,2:&quot;foggy&quot;,3:&quot;rainy&quot;,4:&quot;stormy&quot;&#125;)</span><br><span class="line"></span><br><span class="line"># 数据透视表呈现</span><br><span class="line">BikeData[[&quot;count&quot;,&quot;month&quot;,&quot;weather_word&quot;]].pivot_table(values=&quot;count&quot;,index=&quot;month&quot;,columns=&quot;weather_word&quot;,aggfunc=&quot;mean&quot;)</span><br><span class="line"></span><br><span class="line"># 可视化呈现</span><br><span class="line">sns.FacetGrid(data=BikeData,size=6,aspect=1.5).\</span><br><span class="line">map(sns.pointplot,&quot;month&quot;,&quot;count&quot;,&quot;weather_word&quot;,hue_order=[&quot;sunny&quot;,&quot;foggy&quot;,&quot;rainy&quot;,&quot;stromy&quot;],paletter=&quot;deep&quot;,ci=None).\</span><br><span class="line">add_legend()</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-bb5357d7358585a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>可以看到，</strong></p>
+<ul>
+<li>天气越好，租车人数越多</li>
+<li>5-10月租车人数最多-与天气、气候、营销宣传都有关系</li>
+</ul>
+<h3 id="05-预告"><a href="#05-预告" class="headerlink" title="05 预告"></a>05 预告</h3><p>今天我们针对一份上万行的共享单车数据进行挖掘分析，我们做了相关性分析以及可视化分析，知道了是哪些因素在影响A市的租车需求。</p>
+<p>这份数据还有很多地方可以挖掘，比如预测某个特定条件下的租车人数。</p>
+<p>这就需要结合机器学习的方法，让机器自己去拟合最佳的权重系数，这是我们后面将要研究的主要课题。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WeChat.png" alt="Deng Sha WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPay.png" alt="Deng Sha Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+      <div id="bitcoin" style="display: inline-block">
+        <img id="bitcoin_qr" src="/images/BitCoin.png" alt="Deng Sha Bitcoin"/>
+        <p>Bitcoin</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/25/统计学习方法-朴素贝叶斯法/" rel="next" title="统计学习方法 | 朴素贝叶斯法">
+                <i class="fa fa-chevron-left"></i> 统计学习方法 | 朴素贝叶斯法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/25/Python-数据可视化汇总/" rel="prev" title="Python | 数据可视化汇总">
+                Python | 数据可视化汇总 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Deng Sha</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Suddennebbus" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/cddengsha/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-graduation-cap"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/e6129ed2c755" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#01-目的"><span class="nav-number">1.</span> <span class="nav-text">01 目的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-数据清洗"><span class="nav-number">2.</span> <span class="nav-text">02 数据清洗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-数据处理"><span class="nav-number">3.</span> <span class="nav-text">03 数据处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-数据挖掘"><span class="nav-number">4.</span> <span class="nav-text">04 数据挖掘</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-相关性分析"><span class="nav-number">4.0.1.</span> <span class="nav-text">4.1 相关性分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-可视化分析"><span class="nav-number">4.0.2.</span> <span class="nav-text">4.2 可视化分析</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#4-2-1-租车人数在各分类变量下的箱线图"><span class="nav-number">4.0.2.1.</span> <span class="nav-text">4.2.1 租车人数在各分类变量下的箱线图</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-2-2-连续变量与租车人数的关系"><span class="nav-number">4.0.2.2.</span> <span class="nav-text">4.2.2 连续变量与租车人数的关系</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-2-3-不同季节下，各小时段的租车人数情况"><span class="nav-number">4.0.2.3.</span> <span class="nav-text">4.2.3 不同季节下，各小时段的租车人数情况</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-2-4-工作日与否，各小时租车人数情况"><span class="nav-number">4.0.2.4.</span> <span class="nav-text">4.2.4 工作日与否，各小时租车人数情况</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-2-5-不同天气情况下，各月份的租车人数"><span class="nav-number">4.0.2.5.</span> <span class="nav-text">4.2.5 不同天气情况下，各月份的租车人数</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#05-预告"><span class="nav-number">5.</span> <span class="nav-text">05 预告</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Deng Sha</span>
+
+  
+</div>
+
+
+
+ <div class="powered-by">
+ <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+    本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+
+  <!--div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共17.1k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" color="0,0,255" opacity='0.5' zIndex="-2" count="50" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+</body>
+</html>

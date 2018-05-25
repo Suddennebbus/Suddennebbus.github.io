@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_four.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_four.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="泰坦尼克号的沉没，是人为的悲剧，1800人罹难者近70%，让我们一起来看看泰坦尼克号的幸存者都有哪些特征吧。">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python | 泰坦尼克号幸存者画像">
+<meta property="og:url" content="http://yoursite.com/2018/05/25/Python-泰坦尼克号幸存者画像/index.html">
+<meta property="og:site_name" content="DengSha">
+<meta property="og:description" content="泰坦尼克号的沉没，是人为的悲剧，1800人罹难者近70%，让我们一起来看看泰坦尼克号的幸存者都有哪些特征吧。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-25a03184b0f20bb3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-b482d0298071ccb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-3be2b27d9ae4053c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-9c54618525ededf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-ee2774608813bf7e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-2bacce691b00ff1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-2dd0f82bb3d2f94e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-731c4b7bd13ef82a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-ef5c48b267a9f0ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-b63561310d1a3c4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-3e4d9efe6c147700.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-bf80415d517e1238.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-01c49f1f489ad893.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-813fd22b56c7c027.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-fd47b7807db25f47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-6a03ebdf2a5fb3aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-05-25T07:16:03.063Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python | 泰坦尼克号幸存者画像">
+<meta name="twitter:description" content="泰坦尼克号的沉没，是人为的悲剧，1800人罹难者近70%，让我们一起来看看泰坦尼克号的幸存者都有哪些特征吧。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4263204-25a03184b0f20bb3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/25/Python-泰坦尼克号幸存者画像/"/>
+
+
+
+
+
+  <title>Python | 泰坦尼克号幸存者画像 | DengSha</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DengSha</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Data Hero</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/25/Python-泰坦尼克号幸存者画像/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Deng Sha">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DengSha">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python | 泰坦尼克号幸存者画像</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-25T15:08:06+08:00">
+                2018-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2,285
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  泰坦尼克号的沉没，是人为的悲剧，1800人罹难者近70%，让我们一起来看看泰坦尼克号的幸存者都有哪些特征吧。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://upload-images.jianshu.io/upload_images/4263204-25a03184b0f20bb3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="01-幸存者"><a href="#01-幸存者" class="headerlink" title="01 幸存者"></a>01 幸存者</h3><p>泰坦尼克号的沉没，是人为的悲剧，1800人罹难者近70%，让我们一起来看看泰坦尼克号的幸存者都有哪些特征吧。</p>
+<p><strong>先给出分析框架</strong></p>
+<blockquote>
+<ol>
+<li>一切的分析都建立在数据清洗之后</li>
+<li>幸存率的分析非常重要，下面将按性别、年龄、仓位、登船码头4个维度分别观察与幸存率的关系</li>
+<li>然后按照仓位+性别、仓位+年龄段、年龄段+性别3个二维组合维度观察与幸存率的关系</li>
+<li>最后按仓位+性别+年龄段这个三维组合维度观察与幸存率关系</li>
+</ol>
+</blockquote>
+<p>想知道在泰坦尼克号事故中活下来的人的特征么？</p>
+<p>一起来看看吧。</p>
+<h3 id="02-数据清洗"><a href="#02-数据清洗" class="headerlink" title="02 数据清洗"></a>02 数据清洗</h3><p>一切分析的前提，都是干净可靠的数据，所以我们先来观察一下数据情况，进行数据清洗。</p>
+<p><strong>查看数据三步走</strong></p>
+<blockquote>
+<ol>
+<li>数据大小 df.shape</li>
+<li>字段类型及缺失值</li>
+<li>数据头尾行</li>
+</ol>
+</blockquote>
+<p>使用df.shape查看数据大小，使用df.info()查看数据字段类型和缺失值情况。</p>
+<blockquote>
+<ul>
+<li>891行，12列，占据空间84kB</li>
+<li>Age字段有20%的缺失，年龄是乘客的重要参数，后续会补全</li>
+<li>Cabin字段有70%的缺失，船舱号码不是重要参数，考虑暂不分析该字段</li>
+</ul>
+</blockquote>
+<p>df.head(), df.tail()查看数据头尾行情况</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-b482d0298071ccb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>各字段解释如下：</p>
+<ul>
+<li>PassengerId: 乘客的id</li>
+<li>Survival: 是否幸存 0 = No, 1 = Yes</li>
+<li>Pclass: 舱位 class 1 = 1st, 2 = 2nd, 3 = 3rd</li>
+<li>Name: 姓名</li>
+<li>Sex: 性别</li>
+<li>Age: 年龄</li>
+<li>SibSp: 船上兄弟姐妹以及配偶的个数</li>
+<li>Parch: 船上父母以及子女的个数</li>
+<li>Ticket: 船票号码</li>
+<li>Fare: 票价</li>
+<li>Cabin: 船舱号码</li>
+<li>Embarked: 登船码头 C = Cherbourg, Q = Queenstown, S = Southampton</li>
+</ul>
+<p><strong>补全缺失值</strong></p>
+<p>Age字段是乘客的重要参数，需要补全。</p>
+<p>可不能直接填充0，或者某个数去补全整个数据哦，这样做很危险，数据源会失去客观性！</p>
+<p>那怎么办呢？考虑到不同性别的年龄层不同，不同仓位（可以理解为社会等级）的年龄层也不同，我们可以这样做：</p>
+<blockquote>
+<p>以性别+仓位将数据分组，用每组的中位数去补全各组的空值</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#读取原始数据</span><br><span class="line">titanic=pd.read_csv(r&apos;D:\DataScience\python\python_course\titanic.csv&apos;,sep=&apos;;&apos;)</span><br><span class="line"></span><br><span class="line"># 分组计算不同仓位、性别的年龄中位数，得到一个Series数据，索引为Pclass、Sex</span><br><span class="line">age_median3=titanic.groupby([&quot;Pclass&quot;,&quot;Sex&quot;]).Age.median()</span><br><span class="line">titanic.set_index([&quot;Pclass&quot;,&quot;Sex&quot;],inplace=True)</span><br><span class="line"></span><br><span class="line"># 使用fillna补全空值，将根据索引进行补全</span><br><span class="line">titanic.Age.fillna(age_median3,inplace=True)</span><br><span class="line">titanic.reset_index(inplace=True)</span><br><span class="line"></span><br><span class="line">titanic.Age.describe()</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-3be2b27d9ae4053c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>这样一波操作之后，Age字段有891个非空值，已经被补全。</p>
+<h3 id="03-数据挖掘"><a href="#03-数据挖掘" class="headerlink" title="03 数据挖掘"></a>03 数据挖掘</h3><p>现在我们已经得到一分干净的数据集了，可以开动啦！</p>
+<blockquote>
+<p>是什么因素影响了乘客的幸存率呢？</p>
+</blockquote>
+<h5 id="3-1-按性别、年龄段、仓位、登船码头4个维度分别观察与幸存率的关系"><a href="#3-1-按性别、年龄段、仓位、登船码头4个维度分别观察与幸存率的关系" class="headerlink" title="3.1 按性别、年龄段、仓位、登船码头4个维度分别观察与幸存率的关系"></a>3.1 按性别、年龄段、仓位、登船码头4个维度分别观察与幸存率的关系</h5><ul>
+<li>仓位-幸存率</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 数据透视表</span><br><span class="line">titanic.pivot_table(values=&quot;Survived&quot;,index=&quot;Pclass&quot;,aggfunc=&quot;mean&quot;)</span><br><span class="line"></span><br><span class="line">#可视化呈现</span><br><span class="line">sns.barplot(data=titanic,x=&quot;Pclass&quot;,y=&quot;Survived&quot;,ci=None)</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-9c54618525ededf7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>果然，仓位等级越高，幸存率也越大，可能是由于高等仓位更远离水面，乘客也更少，有更多的逃生机会吧。</p>
+<ul>
+<li>性别-幸存率</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">titanic.pivot_table(values=&quot;Survived&quot;,index=&quot;Sex&quot;,aggfunc=&quot;mean&quot;)</span><br><span class="line"></span><br><span class="line">sns.barplot(data=titanic,x=&quot;Sex&quot;,y=&quot;Survived&quot;,ci=None)</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-ee2774608813bf7e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>女性幸存率明显高于男性，绅士风度在死亡面前依然存在，让人感动。</p>
+<ul>
+<li>年龄段-幸存率</li>
+</ul>
+<p>Age字段是一个连续变量而不是分类变量，我们需要将Age字段离散化之后再进行分析。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 连续变量离散化：将某个变量的所在区间分割为几个小区间，落在同一个区间的观测值用同一个符号表示</span><br><span class="line">titanic[&quot;Ageband&quot;]=pd.cut(titanic[&quot;Age&quot;],5)</span><br></pre></td></tr></table></figure>
+<p>现在我们给titanic这个dataframe新增了一列“Ageband”，它代表Age字段所在的年龄段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 可视化</span><br><span class="line">sns.barplot(data=titanic,x=&quot;Ageband&quot;,y=&quot;Survived&quot;,ci=None)</span><br><span class="line">plt.xticks(rotation=60)</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-2bacce691b00ff1e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>低年龄段生存率最高，64岁以上老人生存率最低，青壮年次之，看来大家还是很有爱的——小朋友先救，青壮年让位，老人可能体力不支或自动放弃。</p>
+<ul>
+<li>登船码头-幸存率<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 用groupby也可实现数据透视表</span><br><span class="line">titanic[[&quot;Embarked&quot;,&quot;Survived&quot;]].groupby(&quot;Embarked&quot;).mean()</span><br><span class="line"></span><br><span class="line">sns.barplot(data=titanic,x=&quot;Embarked&quot;,y=&quot;Survived&quot;,ci=None)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-2dd0f82bb3d2f94e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>C码头登船的幸存率最高，为什么呢？我们来看看各码头登船乘客的仓位情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 数据透视表</span><br><span class="line">titanic.pivot_table(values=&quot;Name&quot;,index=&quot;Pclass&quot;,columns=&quot;Embarked&quot;,aggfunc=&quot;count&quot;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-731c4b7bd13ef82a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<ul>
+<li>S码头登船人数最多，大部分是3等仓位</li>
+<li>Q码头登船的人90%以上是3等仓位</li>
+<li>C码头登船的人半数是1等仓位，数据来看1等仓位的幸存率较高，因此C码头登船的人幸存率较高可解释</li>
+<li>看来C码头主要是有钱人登船，S码头就主要是穷人了</li>
+</ul>
+<h5 id="3-2-按照仓位-性别、仓位-年龄段、年龄段-性别观察与幸存率的关系"><a href="#3-2-按照仓位-性别、仓位-年龄段、年龄段-性别观察与幸存率的关系" class="headerlink" title="3.2 按照仓位+性别、仓位+年龄段、年龄段+性别观察与幸存率的关系"></a>3.2 按照仓位+性别、仓位+年龄段、年龄段+性别观察与幸存率的关系</h5><ul>
+<li>仓位+性别-幸存率<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 数据透视表走起，以数字形式观察结果</span><br><span class="line">titanic.pivot_table(values=&quot;Survived&quot;,index=&quot;Pclass&quot;,columns=&quot;Sex&quot;,aggfunc=&quot;mean&quot;)</span><br><span class="line"></span><br><span class="line"># seaborn作图走起，以图像形式观察结果</span><br><span class="line">sns.barplot(data=titanic,x=&quot;Pclass&quot;,y=&quot;Survived&quot;,hue=&quot;Sex&quot;,ci=None)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-ef5c48b267a9f0ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>男性幸存率普遍低于女性，这难道是传说中的绅士风度在起作用？</p>
+<p>高等仓位幸存率高于低等仓位，一方面可能是因为高等仓位在上层，淹水较慢，逃生时间够长，另一方面可能是人为因素，高等仓位更受照顾；</p>
+<p>一二等仓的女性幸存率很高啊，二三等仓的男性幸存率极低。</p>
+<ul>
+<li>仓位+年龄段-幸存率<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sns.pointplot(data=titanic,x=&quot;Ageband&quot;,y=&quot;Survived&quot;,hue=&quot;Pclass&quot;,ci=None)</span><br><span class="line">plt.xticks(rotation=60)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-b63561310d1a3c4c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>各年龄段1等仓位的生存率最高，3等仓位生存率最低；</p>
+<p>低年龄段的生存率逐次高于高年龄段；</p>
+<p>在考虑各分组生存率的同时，要考虑各分组人数，比如该分组并没有人，那么生存率自然是0，但我们并不能说该分组生存率最低。</p>
+<ul>
+<li>性别+年龄段-幸存率<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">titanic.pivot_table(values=&quot;Survived&quot;,index=&quot;Ageband&quot;,columns=&quot;Sex&quot;,aggfunc=&quot;mean&quot;)</span><br><span class="line"></span><br><span class="line">sns.barplot(data=titanic,x=&quot;Ageband&quot;,y=&quot;Survived&quot;,hue=&quot;Sex&quot;,ci=None)</span><br><span class="line"></span><br><span class="line"># 设置横轴标签位置</span><br><span class="line">plt.xticks(rotation=60)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-3e4d9efe6c147700.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>男性生存率明显偏低与女性，女性高年龄段的生存率逐次高于低年龄段的。</p>
+<h5 id="3-3-三维分析"><a href="#3-3-三维分析" class="headerlink" title="3.3 三维分析"></a>3.3 三维分析</h5><p>前面的分析从一维、二维角度分析了因素与幸存率的关系，下面我们直接从三维因素来分析。</p>
+<ul>
+<li>年龄段+性别+仓位</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">titanic.pivot_table(values=&quot;Survived&quot;,index=&quot;Ageband&quot;,columns=[&quot;Sex&quot;,&quot;Pclass&quot;],aggfunc=&quot;mean&quot;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-bf80415d517e1238.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>输出结果展示了各年龄段下，各性别分别在123等仓位的幸存率。这张表各可能会让你晕晕的，那么我们就可视化呈现吧。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;&quot;各性别下，仓位+年龄段与幸存率关系&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line"># aspect设置画布长宽比</span><br><span class="line"># palette设置hue分组的颜色</span><br><span class="line">sns.FacetGrid(data=titanic,row=&quot;Sex&quot;,aspect=1.5)\</span><br><span class="line">.map(sns.pointplot,&quot;Ageband&quot;,&quot;Survived&quot;,&quot;Pclass&quot;,palette=&quot;deep&quot;,ci=None)\</span><br><span class="line">.add_legend()</span><br><span class="line"></span><br><span class="line">plt.xticks(rotation=60)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-01c49f1f489ad893.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>男性低年龄段幸存率最高，高等仓位幸存率更高；</p>
+<p>中老年女性幸存率最高，1、2等仓位的女性幸存率几乎达到100%，3等仓位女性比较惨一点。</p>
+<ul>
+<li>仓位+登船码头+性别<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 直接可视化呈现吧</span><br><span class="line">sns.FacetGrid(data=titanic,col=&quot;Pclass&quot;,row=&quot;Embarked&quot;)\</span><br><span class="line">.map(sns.barplot,&quot;Pclass&quot;,&quot;Survived&quot;,&quot;Sex&quot;,hue_order=[&quot;male&quot;,&quot;female&quot;],palette=&quot;deep&quot;,ci=None)\</span><br><span class="line">.add_legend()</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-813fd22b56c7c027.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>不论从登船码头还是仓位来看，女性幸存率普遍高于男性；</p>
+<p>按性别来看，高等仓位幸存率高于低等仓位；</p>
+<p><strong>Q码头登船的男乘客生存率最低，我们来看看是不是Q码头男乘客数量较少？</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">titanic.pivot_table(values=&quot;Survived&quot;,index=&quot;Embarked&quot;,columns=&quot;Sex&quot;,aggfunc=&quot;count&quot;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-fd47b7807db25f47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>Q码头登船男乘客多于女乘客，但几乎都罹难了，为什么呢？我们来看看男乘客的仓位、年龄段分布情况，是不是这些情况导致了男乘客生存率较低.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">titanic.pivot_table(values=&quot;Survived&quot;,index=[&quot;Embarked&quot;,&quot;Pclass&quot;],columns=[&quot;Sex&quot;,&quot;Ageband&quot;],aggfunc=&quot;count&quot;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-6a03ebdf2a5fb3aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>Q码头登船的男乘客，绝大部分处于16-32岁，3等仓位，这个分段的乘客幸存率是最低的，解释了为什么Q码头登船的男乘客幸存率趋于0的现象。</p>
+<h3 id="04-预告"><a href="#04-预告" class="headerlink" title="04 预告"></a>04 预告</h3><p>本次针对泰坦尼克号乘客数据，我们分析了幸存者的特征画像：</p>
+<blockquote>
+<p>女性，儿童，头等舱，绅士风度</p>
+</blockquote>
+<p>本次未对数据的直系、旁系亲属个数进行分析，下期考虑加入。</p>
+<p>本次主要使用了数据透视表和seaborn包绘图呈现结果，下期考虑加入特征工程对数据进一步分析。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WeChat.png" alt="Deng Sha WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPay.png" alt="Deng Sha Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+      <div id="bitcoin" style="display: inline-block">
+        <img id="bitcoin_qr" src="/images/BitCoin.png" alt="Deng Sha Bitcoin"/>
+        <p>Bitcoin</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/25/Python-数据可视化汇总/" rel="next" title="Python | 数据可视化汇总">
+                <i class="fa fa-chevron-left"></i> Python | 数据可视化汇总
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/25/python-销售记录可视化/" rel="prev" title="python | 销售记录可视化">
+                python | 销售记录可视化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Deng Sha</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Suddennebbus" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/cddengsha/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-graduation-cap"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/e6129ed2c755" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#01-幸存者"><span class="nav-number">1.</span> <span class="nav-text">01 幸存者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-数据清洗"><span class="nav-number">2.</span> <span class="nav-text">02 数据清洗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-数据挖掘"><span class="nav-number">3.</span> <span class="nav-text">03 数据挖掘</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-按性别、年龄段、仓位、登船码头4个维度分别观察与幸存率的关系"><span class="nav-number">3.0.1.</span> <span class="nav-text">3.1 按性别、年龄段、仓位、登船码头4个维度分别观察与幸存率的关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-按照仓位-性别、仓位-年龄段、年龄段-性别观察与幸存率的关系"><span class="nav-number">3.0.2.</span> <span class="nav-text">3.2 按照仓位+性别、仓位+年龄段、年龄段+性别观察与幸存率的关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-三维分析"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.3 三维分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-预告"><span class="nav-number">4.</span> <span class="nav-text">04 预告</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Deng Sha</span>
+
+  
+</div>
+
+
+
+ <div class="powered-by">
+ <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+    本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+
+  <!--div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共17.1k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" color="0,0,255" opacity='0.5' zIndex="-2" count="50" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+</body>
+</html>

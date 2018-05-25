@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_four.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_four.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前阵子针对python数据可视化进行了一波学习和实操，是时候总结一下数据可视化的方法和代码了，一起来复习吧！">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python | 数据可视化汇总">
+<meta property="og:url" content="http://yoursite.com/2018/05/25/Python-数据可视化汇总/index.html">
+<meta property="og:site_name" content="DengSha">
+<meta property="og:description" content="前阵子针对python数据可视化进行了一波学习和实操，是时候总结一下数据可视化的方法和代码了，一起来复习吧！">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-7dce65a5af881391.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-03a68b6a271462ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-7978a6d11b0e0dfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-922f60ac87869e48.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-f3eb50008c0290d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-2d9f12629ec9865c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-a5a7f916fbc3be05.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-08e46a5543cb1342.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-86ca2464291f471b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-05-25T07:14:56.809Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python | 数据可视化汇总">
+<meta name="twitter:description" content="前阵子针对python数据可视化进行了一波学习和实操，是时候总结一下数据可视化的方法和代码了，一起来复习吧！">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4263204-7dce65a5af881391.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/25/Python-数据可视化汇总/"/>
+
+
+
+
+
+  <title>Python | 数据可视化汇总 | DengSha</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DengSha</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Data Hero</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/25/Python-数据可视化汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Deng Sha">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DengSha">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python | 数据可视化汇总</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-25T15:07:46+08:00">
+                2018-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1,888
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  9
+                </span>
+              
+            </div>
+          
+
+          
+              <div class="post-description">
+                  前阵子针对python数据可视化进行了一波学习和实操，是时候总结一下数据可视化的方法和代码了，一起来复习吧！
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="https://upload-images.jianshu.io/upload_images/4263204-7dce65a5af881391.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="01-提纲"><a href="#01-提纲" class="headerlink" title="01 提纲"></a>01 提纲</h3><p>不断总结是学习进步的阶梯。</p>
+<p>前阵子针对python数据可视化进行了一波学习和实操，是时候总结一下数据可视化的方法和代码了，一起来复习吧！</p>
+<p>想要说明的一点是，方法千千万，是学习不完的，怎么办呢？</p>
+<p>最近听到一个词：<strong>用以致学</strong>。就是以目的为导向去学习，学到之后再进行总结，而不是盲目地学。</p>
+<blockquote>
+<p><strong>本次数据可视化复习提纲如下：</strong></p>
+<ol>
+<li>散点图</li>
+<li>箱线图</li>
+<li>折线图</li>
+<li>条形图、直方图</li>
+<li>饼图</li>
+<li>多图</li>
+</ol>
+<p>主要使用到matplotlib.pyplot和seaborn两个python内置绘图包。</p>
+</blockquote>
+<p>下面我们开始吧~</p>
+<p>对了，别忘记引入包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">import seaborn as sns</span><br><span class="line">import numpy as np</span><br><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">#设置在notebook中直接展示图形输出</span><br><span class="line">%matplotlib inline</span><br><span class="line">#设置图片清晰度</span><br><span class="line">%config InlineBackend.figure_format=&quot;retina&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="02-散点图"><a href="#02-散点图" class="headerlink" title="02 散点图"></a>02 散点图</h3><p><strong>【.plot作图】</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># kind=&quot;scatter&quot;,做散点图，x轴表示花瓣长度，y轴表示花瓣宽度</span><br><span class="line">iris.plot(kind=&quot;scatter&quot;,color=&quot;red&quot;,x=&quot;petal_length&quot;,y=&quot;petal_width&quot;)</span><br></pre></td></tr></table></figure></p>
+<p><strong>【matlibplot.pyplot.plot作图】 [plt.plot( )]</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">plt.style.use(&apos;ggplot&apos;)</span><br><span class="line"></span><br><span class="line">#设置画布大小</span><br><span class="line">plt.figure(figsize=(8,6))</span><br><span class="line"></span><br><span class="line">#scatter绘制散点图，s设置点大小</span><br><span class="line">plt.scatter(x=top10.Purchases,y=top10.Sales,s=100)</span><br></pre></td></tr></table></figure></p>
+<p><strong>【seaborn作图】[sns.]  v.s. 【.plt作图】</strong></p>
+<ol>
+<li>matplotlib是python的主要绘图工具，但其自身的语法比较复杂</li>
+<li>Seaborn是基于matplotlib产生的一个模块，专攻于统计可视化</li>
+<li>Seaborn和matplotlib的关系类似于pandas和numpy的关系</li>
+</ol>
+<p>我们来看看seaborn相较于plt的简洁之处，下面两个代码实现同样的效果——花瓣长宽散点图，以品种划分数据.</p>
+<p><strong>seaborn实现</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># FacetGrid中的hue参数指明划分数据的变量，这里是species（品种）</span><br><span class="line"># \ 用于将一行语句提行</span><br><span class="line"># add_legend()添加图例</span><br><span class="line">#先将iris数据集以species字段划分开</span><br><span class="line"></span><br><span class="line">sns.FacetGrid(iris,hue=&apos;species&apos;,size=7)\</span><br><span class="line">.map(plt.scatter,&apos;petal_length&apos;,&apos;petal_width&apos;).add_legend()</span><br></pre></td></tr></table></figure></p>
+<p><strong>plt实现</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 使用布尔型索引，分别获取三种类型鸢尾花的数据集</span><br><span class="line">setosa=iris[iris.species==&quot;Iris-setosa&quot;]</span><br><span class="line">versicolor=iris[iris.species==&quot;Iris-versicolor&quot;]</span><br><span class="line">virginica=iris[iris.species==&quot;Iris-virginica&quot;]</span><br><span class="line"></span><br><span class="line">#作图，setosa数据散点图ax</span><br><span class="line">bx = setosa.plot(kind=&quot;scatter&quot;,x=&quot;petal_length&quot;,y=&quot;petal_width&quot;,color=&quot;red&quot;,label=&quot;setosa&quot;,figsize=(10,6))</span><br><span class="line">#将其余两种类型的花数据也作图在ax上</span><br><span class="line">versicolor.plot(ax=bx,kind=&quot;scatter&quot;,x=&quot;petal_length&quot;,y=&quot;petal_width&quot;,color=&quot;blue&quot;,label=&quot;versicolor&quot;)</span><br><span class="line">virginica.plot(ax=bx,kind=&quot;scatter&quot;,x=&quot;petal_length&quot;,y=&quot;petal_width&quot;,color=&quot;yellow&quot;,label=&quot;virginica&quot;)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-03a68b6a271462ec.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="03-箱线图"><a href="#03-箱线图" class="headerlink" title="03 箱线图"></a>03 箱线图</h3><p>箱线图体现数据的最大、最小值，中位数、上下四分位数，是一个数据集的统计结果可视化。</p>
+<p><strong>【.plot作图】</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 指定某列数据，作单个箱线图</span><br><span class="line"># kind=&quot;box&quot;作箱图</span><br><span class="line">iris.petal_width.plot(kind=&quot;box&quot;,label=&quot;iris&quot;,figsize=(8,4))</span><br></pre></td></tr></table></figure>
+<p><strong>【seaborn作图】[sns.]</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 花萼宽度箱线图，以品种划分数据</span><br><span class="line">sns.boxplot(data=iris,x=&apos;species&apos;,y=&apos;sepal_width&apos;)</span><br><span class="line"></span><br><span class="line">#下面语句实现与sns.boxplot一样的效果</span><br><span class="line">iris[[&quot;sepal_width&quot;,&quot;species&quot;]].boxplot(grid=False,by=&quot;species&quot;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-7978a6d11b0e0dfa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="04-折线图"><a href="#04-折线图" class="headerlink" title="04 折线图"></a>04 折线图</h3><p><strong>【matlibplot.pyplot.plot作图】 [plt.]</strong><br>plt拥有很多内置函数可调用，对于美化图片、设置标识等都比较方便。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#绘制折线图</span><br><span class="line">plt.plot(rank1m.year,rank1m.pct,color=&quot;blue&quot;,linewidth=2)</span><br><span class="line"></span><br><span class="line">#plt.fill_between设置填充线与坐标轴之间的空间</span><br><span class="line">plt.fill_between(rank1m.year,rank1m.pct,color=&quot;blue&quot;,alpha=0.2)</span><br><span class="line"></span><br><span class="line">#设置坐标轴区间范围</span><br><span class="line">plt.xlim(1880,2016)</span><br><span class="line">plt.ylim(0,9)</span><br><span class="line"></span><br><span class="line">#美化图：给图添加标题，调整字体大小等</span><br><span class="line">plt.title(&quot;Popularity of 1# boys&apos;name by year&quot;,size=18,color=&quot;blue&quot;)</span><br><span class="line">plt.xlabel(&quot;Year&quot;,size=16)</span><br><span class="line">plt.ylabel(&quot;% of male births&quot;,size=16)</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-922f60ac87869e48.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="05-条形图、直方图"><a href="#05-条形图、直方图" class="headerlink" title="05 条形图、直方图"></a>05 条形图、直方图</h3><p><strong>【matlibplot.pyplot.plot作图】 [plt.]</strong><br>barh-水平条形图<br>bar-垂直条形图<br>hist-直方图</p>
+<p><strong>绘制水平条形图</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">plt.style.use(&apos;ggplot&apos;)</span><br><span class="line"></span><br><span class="line">#barh绘制水平条形图；bar绘制垂直直方图</span><br><span class="line">&quot;&quot;&quot;注意，条形图条数np.arange(10),要与top10.Sales数据数量一致，否则会报错-形状不匹(shape mismatch)&quot;&quot;&quot;</span><br><span class="line">plt.barh(np.arange(10),top10.Sales,height=0.6)</span><br><span class="line"></span><br><span class="line">#添加标题</span><br><span class="line">plt.title(&apos;Top 10 Sales Company&apos;)</span><br><span class="line">plt.xlabel(&apos;Total Revenue&apos;)</span><br><span class="line">plt.ylabel(&apos;Company&apos;)</span><br><span class="line"></span><br><span class="line">#修改纵坐标、横坐标刻度</span><br><span class="line">&apos;&apos;&apos;此语句，可用tick_label=top10.Company替代，替代语句放在plt.barh()参数中</span><br><span class="line">例如：plt.barh(np.arange(10),top10.Sales,tick_label=top10.Company,height=0.8) &apos;&apos;&apos;</span><br><span class="line">plt.yticks(np.arange(10),top10.Company)</span><br><span class="line">plt.xticks([0,20000,40000,60000,80000,100000,120000,140000],</span><br><span class="line">          [&apos;$0k&apos;,&apos;$20k&apos;,&apos;$40k&apos;,&apos;$60k&apos;,&apos;$80k&apos;,&apos;$100k&apos;,&apos;$120k&apos;,&apos;$140k&apos;])</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-f3eb50008c0290d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>绘制直方图</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 对于原始数据df中，每笔订单的交易额(ext price)，统计单笔订单交易额分布情况</span><br><span class="line"></span><br><span class="line">#hist绘制直方图，bins设置区间个数</span><br><span class="line">plt.hist(df[&apos;ext price&apos;],bins=20,rwidth=0.8)</span><br><span class="line"></span><br><span class="line">plt.xlim(-200, 5000)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-2d9f12629ec9865c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="06-饼图"><a href="#06-饼图" class="headerlink" title="06 饼图"></a>06 饼图</h3><p><strong>【matlibplot.pyplot.plot作图】 [plt.]</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"> #plt.pie()绘制饼图</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">labels代表每个扇区的标签，</span><br><span class="line"></span><br><span class="line">colors=[&apos;b&apos;,&apos;g&apos;],设置扇区颜色</span><br><span class="line"></span><br><span class="line">startangle代表起始位置角度</span><br><span class="line"></span><br><span class="line">explode=(0.1,0,0,0,0,0,0,0,0,0)代表将第一个扇区拉出来0.1，作为突出显示</span><br><span class="line"></span><br><span class="line">autopct=&apos;%1.1f%%&apos;,代表给出每个扇区的占比 ，精确到小数点后1位</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">plt.pie(top10.Sales,labels=[top10.Company](http://top10.company/),</span><br><span class="line"></span><br><span class="line">        colors=[&apos;r&apos;,&apos;y&apos;,&apos;b&apos;,&apos;g&apos;,&apos;c&apos;,&apos;r&apos;,&apos;y&apos;,&apos;b&apos;,&apos;g&apos;,&apos;c&apos;],</span><br><span class="line"></span><br><span class="line">        startangle=90,</span><br><span class="line"></span><br><span class="line">        explode=(0.1,0,0,0,0,0,0,0,0,0),</span><br><span class="line"></span><br><span class="line">        autopct=&apos;%1.1f%%&apos;)</span><br><span class="line"></span><br><span class="line">#使饼图呈圆形</span><br><span class="line"></span><br><span class="line">plt.axis(&apos;equal&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-a5a7f916fbc3be05.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="07-绘制多图"><a href="#07-绘制多图" class="headerlink" title="07 绘制多图"></a>07 绘制多图</h3><p>在一张画布上，绘制多张图片，更加方便对比分析。</p>
+<p><strong>【matlibplot.pyplot.plot作图】 [plt.]</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">plt.style.use(&apos;ggplot&apos;)</span><br><span class="line">#设置画布大小</span><br><span class="line">fig=plt.figure(figsize=(12,12))</span><br><span class="line"></span><br><span class="line">#加上图像大标题</span><br><span class="line">fig.suptitle(&apos;Sales Analysis&apos;,fontsize=16,fontweight=&apos;bold&apos;)</span><br><span class="line"></span><br><span class="line">#fig.add_subplot(x,y,z),表示将画布分为x行,y列,当前图像放在从左到右、从上到下的第z个位置</span><br><span class="line"></span><br><span class="line">#添加第一个子图</span><br><span class="line">ax1=fig.add_subplot(2,2,1)</span><br><span class="line">plt.barh(np.arange(10),top10.Sales,height=0.5,tick_label=top10.Company)</span><br><span class="line">plt.title(&apos;Revenue&apos;)</span><br><span class="line"></span><br><span class="line">#加入平均销售额线  plt.axvline()表示添加垂直线axis vertical line</span><br><span class="line">revenue_avg=top10.Sales.mean()</span><br><span class="line">plt.axvline(x=revenue_avg,color=&apos;b&apos;,linestyle=&apos;--&apos;,linewidth=3)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#添加第二个子图</span><br><span class="line">ax2=fig.add_subplot(222)</span><br><span class="line">plt.barh(np.arange(10),top10.Purchases,height=0.5)</span><br><span class="line">plt.title(&apos;Purchases&apos;)</span><br><span class="line"></span><br><span class="line">#设置不显示y轴刻度</span><br><span class="line">plt.yticks(visible=False)</span><br><span class="line"></span><br><span class="line">#加入平均订单数线</span><br><span class="line">Purchases_avg=top10.Purchases.mean()</span><br><span class="line">plt.axvline(x=Purchases_avg,color=&apos;b&apos;,linestyle=&apos;--&apos;,linewidth=3)</span><br><span class="line"></span><br><span class="line">#加入第三个、第四个子图</span><br><span class="line">ax3=fig.add_subplot(223)</span><br><span class="line">plt.barh(np.arange(10),top10.Sales,height=0.5,tick_label=top10.Company)</span><br><span class="line">plt.title(&apos;Revenue&apos;)</span><br><span class="line"></span><br><span class="line">ax4=fig.add_subplot(224)</span><br><span class="line">plt.pie(top10.Sales,labels=top10.Company,</span><br><span class="line">        colors=[&apos;r&apos;,&apos;y&apos;,&apos;b&apos;,&apos;g&apos;,&apos;c&apos;,&apos;r&apos;,&apos;y&apos;,&apos;b&apos;,&apos;g&apos;,&apos;c&apos;],</span><br><span class="line">        startangle=90,</span><br><span class="line">        explode=(0.1,0,0,0,0,0,0,0,0,0),</span><br><span class="line">        autopct=&apos;%1.1f%%&apos;)</span><br><span class="line">plt.axis(&apos;equal&apos;)</span><br><span class="line"></span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-08e46a5543cb1342.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>【seaborn作图】[sns.]</strong></p>
+<ol>
+<li>sns.pairplot实现</li>
+<li>用于快速观察各变量的分布情况，关系等</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 一条语句，展现4个变量之间的关系</span><br><span class="line"># 分别展示了4个变量分布的直方图；以及两两变量之间的散点图</span><br><span class="line"></span><br><span class="line">sns.pairplot(iris,hue=&apos;species&apos;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-86ca2464291f471b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="08-总结"><a href="#08-总结" class="headerlink" title="08 总结"></a>08 总结</h3><p>本文完整梳理了数据分析中常用的几种图的python绘制方法。</p>
+<blockquote>
+<p>主要涉及到以下几种图的绘制：</p>
+<ol>
+<li>散点图</li>
+<li>箱线图</li>
+<li>折线图</li>
+<li>条形图、直方图</li>
+<li>饼图</li>
+<li>多图</li>
+</ol>
+</blockquote>
+<blockquote>
+<p>主要使用到的绘图包</p>
+<ol>
+<li>matplotlib.pyplot</li>
+<li>seaborn</li>
+</ol>
+</blockquote>
+<p>当然，条条大路通罗马，方法是学不完的，一定要以目的为导向学习技能，希望对你有帮助。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/WeChat.png" alt="Deng Sha WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/AliPay.png" alt="Deng Sha Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+      <div id="bitcoin" style="display: inline-block">
+        <img id="bitcoin_qr" src="/images/BitCoin.png" alt="Deng Sha Bitcoin"/>
+        <p>Bitcoin</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/25/Python-共享单车需求分析/" rel="next" title="Python | 共享单车需求分析">
+                <i class="fa fa-chevron-left"></i> Python | 共享单车需求分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/25/Python-泰坦尼克号幸存者画像/" rel="prev" title="Python | 泰坦尼克号幸存者画像">
+                Python | 泰坦尼克号幸存者画像 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Deng Sha</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Suddennebbus" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.zhihu.com/people/cddengsha/activities" target="_blank" title="知乎">
+                      
+                        <i class="fa fa-fw fa-graduation-cap"></i>知乎</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/e6129ed2c755" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#01-提纲"><span class="nav-number">1.</span> <span class="nav-text">01 提纲</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-散点图"><span class="nav-number">2.</span> <span class="nav-text">02 散点图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-箱线图"><span class="nav-number">3.</span> <span class="nav-text">03 箱线图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-折线图"><span class="nav-number">4.</span> <span class="nav-text">04 折线图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#05-条形图、直方图"><span class="nav-number">5.</span> <span class="nav-text">05 条形图、直方图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#06-饼图"><span class="nav-number">6.</span> <span class="nav-text">06 饼图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#07-绘制多图"><span class="nav-number">7.</span> <span class="nav-text">07 绘制多图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#08-总结"><span class="nav-number">8.</span> <span class="nav-text">08 总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Deng Sha</span>
+
+  
+</div>
+
+
+
+ <div class="powered-by">
+ <i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+    本站访客数:<span id="busuanzi_value_site_uv"></span>
+  </span>
+  </div>
+
+  <!--div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+-->
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共17.1k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" color="0,0,255" opacity='0.5' zIndex="-2" count="50" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+  
+  
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+    <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+    <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+</body>
+</html>
