@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -84,9 +84,9 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python|百年姓名趋势分析">
 <meta property="og:url" content="http://yoursite.com/2018/05/25/20171127-美国婴儿姓名分析/index.html">
-<meta property="og:site_name" content="Dengsha">
+<meta property="og:site_name" content="DengSha">
 <meta property="og:description" content="拿到一份1880-2016这136年间美国婴儿取名的数据(数据源在这里下载），数据总共有189万条">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4263204-95241e1dc12b3b72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4263204-058085a48483c642.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4263204-37d2bbcc0c3009e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -98,7 +98,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4263204-bad2fa5c5e00112f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4263204-da83fa3c2d3adf86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4263204-a87d85f65f09bc2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-05-25T05:56:50.801Z">
+<meta property="og:updated_time" content="2018-05-25T06:52:46.259Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python|百年姓名趋势分析">
 <meta name="twitter:description" content="拿到一份1880-2016这136年间美国婴儿取名的数据(数据源在这里下载），数据总共有189万条">
@@ -138,7 +138,7 @@
 
 
 
-  <title>Python|百年姓名趋势分析 | Dengsha</title>
+  <title>Python|百年姓名趋势分析 | DengSha</title>
   
 
 
@@ -150,7 +150,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -168,7 +168,7 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Dengsha</span>
+        <span class="site-title">DengSha</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -254,7 +254,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Dengsha">
+      <meta itemprop="name" content="DengSha">
     </span>
 
     
@@ -348,18 +348,17 @@
 
       
         <p><img src="http://upload-images.jianshu.io/upload_images/4263204-95241e1dc12b3b72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>###01 引子<br>今天咱们来实操上一课的内容。</p>
+<h3 id="01-引子"><a href="#01-引子" class="headerlink" title="01 引子"></a>01 引子</h3><p>今天咱们来实操上一课的内容。</p>
 <p>还记得上一课的内容么？</p>
 <blockquote>
 <p>上课我们学习了python pandas包中的groupby方法，如果记不清了可以点击这里回顾哦：<br><a href="https://www.jianshu.com/p/2432a8d2c006" target="_blank" rel="noopener">groupby方法详细讲解</a></p>
 </blockquote>
 <p><em>之前的文章有朋友反馈说更愿意在文章中看到讲解内容而不是链接地址，那么我们今天就把github中的内容搬到这里来吧，希望可以更好地帮助大家学习python～</em></p>
-<p>###02 动手实操吧<br>这里我们拿到一份1880-2016这136年间美国婴儿取名的数据(<a href="https://www.ssa.gov/oact/babynames/limits.html" target="_blank" rel="noopener">数据源在这里下载</a>），数据总共有189万条，57.7M的大小，如我们之前所说，这样的数据量Excel已经吃不消了。</p>
+<h3 id="02-动手实操吧"><a href="#02-动手实操吧" class="headerlink" title="02 动手实操吧"></a>02 动手实操吧</h3><p>这里我们拿到一份1880-2016这136年间美国婴儿取名的数据(<a href="https://www.ssa.gov/oact/babynames/limits.html" target="_blank" rel="noopener">数据源在这里下载</a>），数据总共有189万条，57.7M的大小，如我们之前所说，这样的数据量Excel已经吃不消了。</p>
 <p><strong>所以我们用Python！</strong></p>
 <p>首先读取1880-2016年的取名数据，由于每年的数据是一个独立的dataframe，因此我们使用concat()方法将各年数据整合为一个dataframe<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import pandas as pd</span><br><span class="line"></span><br><span class="line">#读取1880-2016年婴儿姓名使用信息，由于信息表按年统计，因此需要将多年数据整合到一张表中</span><br><span class="line">years=range(1880,2017)</span><br><span class="line">columns=[&quot;name&quot;,&quot;gender&quot;,&quot;frequency&quot;]</span><br><span class="line">pieces=[] #用于存储循环读取的每一年的数据,list中的每个元素代表一年的数据</span><br><span class="line"></span><br><span class="line">#使用循环读取每年数据，并将各年数据都存入pieces中,pieces列表的各元素表示各年的数据</span><br><span class="line">for year in years:</span><br><span class="line">    path=&quot;/Users/dengsudden/Documents/python_course/names/yob%d.txt&quot; %year</span><br><span class="line">    frame=pd.read_csv(path,names=columns)</span><br><span class="line">    frame[&quot;year&quot;]=year</span><br><span class="line">    pieces.append(frame)</span><br><span class="line"></span><br><span class="line">#中pieces列表中填入各年数据后，需要使用concat方法将pieces各元素整合在一起</span><br><span class="line">baby_names=pd.concat(pieces,ignore_index=True)</span><br><span class="line"></span><br><span class="line">baby_names.tail()</span><br></pre></td></tr></table></figure></p>
 <p>输出结果如下，这是数据表的最后5行，输出方便大家观察数据表结构：<img src="http://upload-images.jianshu.io/upload_images/4263204-058085a48483c642.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
-<p>####接下来我们正式开始实操</p>
-<p><strong>1. 统计不同年份、不同性别分组下，各名字出现次数所占分组人数比例</strong></p>
+<h4 id="接下来我们正式开始实操"><a href="#接下来我们正式开始实操" class="headerlink" title="接下来我们正式开始实操"></a>接下来我们正式开始实操</h4><p><strong>1. 统计不同年份、不同性别分组下，各名字出现次数所占分组人数比例</strong></p>
 <p>思路：这里我们先自定义了一个函数dd_pct，然后使用了groupby按年份、性别分组，最后分别对每个分组调用我们的自定义函数add_pct</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#先自定义函数，统计分组中各名字占比</span><br><span class="line">def add_pct(group):</span><br><span class="line">    group[&quot;pct&quot;]=group.frequency/group.frequency.sum()*100</span><br><span class="line">    return group</span><br><span class="line"></span><br><span class="line">baby_names=baby_names.groupby([&quot;year&quot;,&quot;gender&quot;]).apply(add_pct)</span><br><span class="line">baby_names.head()</span><br></pre></td></tr></table></figure>
 <p>输出结果如下，可以看到，数据表中增加了一列pct，代表各名字出现次数在分组中的比例：<img src="http://upload-images.jianshu.io/upload_images/4263204-37d2bbcc0c3009e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
@@ -384,7 +383,7 @@
 <p><strong>接下来根据统计结果绘图</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(name_countm.year,name_countm.name_count,color=&quot;blue&quot;,linewidth=2)</span><br><span class="line">plt.fill_between(name_countm.year,name_countm.name_count,color=&quot;blue&quot;,alpha=0.2)</span><br><span class="line">plt.xlim(1880,2016)</span><br><span class="line">plt.ylim(0,17000)</span><br><span class="line">plt.title(&quot;Number of boy&apos;s name by year&quot;,size=20,color=&quot;blue&quot;)</span><br><span class="line">plt.xlabel(&quot;Year&quot;,size=18)</span><br><span class="line">plt.ylabel(&quot;Number of names&quot;,size=18)</span><br></pre></td></tr></table></figure></p>
 <p>趋势图如下：<img src="http://upload-images.jianshu.io/upload_images/4263204-da83fa3c2d3adf86.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""><img src="http://upload-images.jianshu.io/upload_images/4263204-a87d85f65f09bc2c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
 <p>通过以上验证可以看到，不论男女，可选名字数量逐年递增，这可能也是导致每年最流行的名字占比当年出生人口比例逐年下降的因素之一。（当然，这也可能是民众思想解放，创造力爆发的结果）</p>
-<p>###03 结语<br>今天我们一起针对python pandas包进行了实操，特别是对于groupby和matplotlib可视化的练习。</p>
+<h3 id="03-结语"><a href="#03-结语" class="headerlink" title="03 结语"></a>03 结语</h3><p>今天我们一起针对python pandas包进行了实操，特别是对于groupby和matplotlib可视化的练习。</p>
 <p>实操代码我放在了github上，里面有更加详细的说明和一些作业练习，如果没有看过瘾可以点进github中看看</p>
 <blockquote>
 <p><a href="https://github.com/Suddennebbus/Python_Learning/blob/master/Lesson6%20%E6%A1%88%E4%BE%8B%20%E7%BE%8E%E5%9B%BD%E5%A9%B4%E5%84%BF%E5%90%8D%E5%AD%97%E6%95%B0%E6%8D%AE.ipynb" target="_blank" rel="noopener">实操代码</a></p>
@@ -402,7 +401,7 @@
     
       <div>
         <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div>Donate comment here</div>
+  <div></div>
   <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
     <span>Donate</span>
   </button>
@@ -451,6 +450,22 @@
       
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/25/统计学习方法-概论/" rel="prev" title="统计学习方法 | 概论">
+                统计学习方法 | 概论 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
 
       
       
@@ -498,8 +513,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -514,7 +538,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -527,7 +551,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -572,6 +596,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#01-引子"><span class="nav-number">1.</span> <span class="nav-text">01 引子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-动手实操吧"><span class="nav-number">2.</span> <span class="nav-text">02 动手实操吧</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#接下来我们正式开始实操"><span class="nav-number">2.1.</span> <span class="nav-text">接下来我们正式开始实操</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-结语"><span class="nav-number">3.</span> <span class="nav-text">03 结语</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -620,7 +660,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共1.6k字</span>
+  <span class="post-count">博客全站共3.1k字</span>
 </div>
         
 
