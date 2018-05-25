@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="统计学习方法," />
 
 
 
@@ -79,14 +79,25 @@
 
 
 
+<meta name="description" content="这周我们进入正题，对各个统计学习方法按照三要素的结构进行学习，先从机器学习最原始的方法说起——感知机">
+<meta name="keywords" content="统计学习方法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="统计学习方法 | 感知机">
 <meta property="og:url" content="http://yoursite.com/2018/05/25/统计学习方法-感知机/index.html">
 <meta property="og:site_name" content="DengSha">
+<meta property="og:description" content="这周我们进入正题，对各个统计学习方法按照三要素的结构进行学习，先从机器学习最原始的方法说起——感知机">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-25T06:53:54.613Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-c3ed2d6bf2f580f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-3b9027a03906aeb4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-01fc4e3a94c680ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-6fff419bb564c9e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-e876e5db3787c538.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-bf93ef1bfb24225e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-05-25T07:02:07.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计学习方法 | 感知机">
+<meta name="twitter:description" content="这周我们进入正题，对各个统计学习方法按照三要素的结构进行学习，先从机器学习最原始的方法说起——感知机">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4263204-c3ed2d6bf2f580f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -290,7 +301,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  0
+                  1,036
                 </span>
               
 
@@ -306,12 +317,16 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  4
                 </span>
               
             </div>
           
 
+          
+              <div class="post-description">
+                  这周我们进入正题，对各个统计学习方法按照三要素的结构进行学习，先从机器学习最原始的方法说起——感知机
+              </div>
           
 
         </div>
@@ -327,7 +342,61 @@
       
 
       
-        
+        <p><img src="https://upload-images.jianshu.io/upload_images/4263204-c3ed2d6bf2f580f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="01-见证者"><a href="#01-见证者" class="headerlink" title="01 见证者"></a>01 见证者</h3><p>上一周我们了解了<a href="https://www.jianshu.com/p/9b39be467330" target="_blank" rel="noopener">统计学习方法的概念和基本的三要素</a></p>
+<p>还记得三要素么？</p>
+<blockquote>
+<p>模型、策略、算法</p>
+</blockquote>
+<p>这周我们进入正题，对各个统计学习方法按照三要素的结构进行学习，先从机器学习最原始的方法说起——感知机。</p>
+<p>稍微了解一下人工智能的发展历史，我们可以知道，感知机算法见证了人工智能领域的第一次低谷期，启发了后面的神经网络和支持向量机。</p>
+<p>虽然我们已经不再使用感知机算法求解复杂问题，但了解其思路对于后面神经网络、支持向量机等算法的学习是非常必要的。</p>
+<p>下面就一起来学习吧～</p>
+<h3 id="02-感知机模型"><a href="#02-感知机模型" class="headerlink" title="02 感知机模型"></a>02 感知机模型</h3><p>感知机在1957年由Rosenblatt提出，是神经网络、支持向量机的基础，它是二分类的线性分类模型，属于判别模型。</p>
+<p>我们来看看感知机的定义，</p>
+<blockquote>
+<p>由输入空间X到输出空间Y的如下函数称为感知机：</p>
+<p>y=f(x)=sign(w.x+b)</p>
+<ul>
+<li>其中，w b为感知机模型参数，w为权值、权值向量weight vector，b为偏置bias，sign为符号函数，</li>
+<li>sign(x)=+1,x&gt;=0;  -1,x&lt;0</li>
+<li>分离超平面S：w.x+b=0</li>
+</ul>
+</blockquote>
+<p><strong>感知机的目的是求出将训练数据集线性划分的分离超平面S。</strong></p>
+<p>正如概论中所说，要达到感知机的目的，我们找到这个超平面的损失函数L(w,b)，利用梯度下降法对损失函数极小化，从而求得感知机模型。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-3b9027a03906aeb4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="03-感知机策略"><a href="#03-感知机策略" class="headerlink" title="03 感知机策略"></a>03 感知机策略</h3><p>学习策略，就是求解最佳超平面S的策略，</p>
+<blockquote>
+<p>可以概括为两步：</p>
+<ol>
+<li>定义损失函数</li>
+<li>损失函数极小化</li>
+</ol>
+</blockquote>
+<h6 id="定义损失函数"><a href="#定义损失函数" class="headerlink" title="定义损失函数"></a>定义损失函数</h6><p>感知机是0、1的二分类模型，直观来讲，其损失函数就是误分类点到分离超平面S的总距离，损失函数如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-01fc4e3a94c680ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="感知机损失函数"></p>
+<h6 id="损失函数最小化"><a href="#损失函数最小化" class="headerlink" title="损失函数最小化"></a>损失函数最小化</h6><p>损失函数已经定义，接下来就是将损失函数最小化的策略：在假设空间中选取使损失函数最小的模型参数w,b，从而得到感知机模型f(x)=sign(wx+b)</p>
+<h3 id="04-感知机算法"><a href="#04-感知机算法" class="headerlink" title="04 感知机算法"></a>04 感知机算法</h3><p>算法其实就是损失函数最小化的具体计算方法，这里使用<strong>随机梯度下降法</strong>（如果有必要，后期可能会补充分享该内容）</p>
+<p>感知机算法是基于随机梯度下降法的对损失函数的最优化算法，有原始形式和对偶形式，算法可以表示如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-6fff419bb564c9e2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="感知机算法-极小化损失函数"></p>
+<p>下面给出算法的原始形式</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-e876e5db3787c538.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>看了以上过程你可能还是很懵逼，那么我们对以上算法进行直观解释看看：</p>
+<blockquote>
+<p>当一个实例被误分类，即位于分离超平面S的错误一侧，则调整w b值，使分离超平面S向该误分类点的移动，以减少该误分类点与超平面S的距离，直至超平面越过该误分类点，使其被正确分类。</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-bf93ef1bfb24225e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h3 id="05-总结"><a href="#05-总结" class="headerlink" title="05 总结"></a>05 总结</h3><p><strong>简单总结一下感知机</strong></p>
+<ul>
+<li>感知机学习策略是极小化损失函数L(w,b)</li>
+<li>感知机学习算法是基于随机梯度下降法的对损失函数的最优化算法，有原始形式和对偶形式</li>
+<li>当训练数据集线性可分时，感知机学习算法是收敛的</li>
+<li>当训练数据集线性可分时，感知机学习算法有无穷多个解，其解由于不同的初值或不同的迭代顺序而可能有所不同</li>
+</ul>
+<p>虽然对于复杂问题的求解，我们已经不再使用感知机方法，但感知机是神级网络和支持向量机的基础。</p>
+<p>这周我们从感知机模型、策略、算法这三要素对感知机进行了解和学习，下周我们将对K近邻法(KNN)进行学习，敬请期待～</p>
+
       
     </div>
     
@@ -375,6 +444,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/统计学习方法/" rel="tag"><i class="fa fa-tag"></i> 统计学习方法</a>
+          
+        </div>
       
 
       
@@ -449,8 +524,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -524,6 +608,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#01-见证者"><span class="nav-number">1.</span> <span class="nav-text">01 见证者</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#02-感知机模型"><span class="nav-number">2.</span> <span class="nav-text">02 感知机模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#03-感知机策略"><span class="nav-number">3.</span> <span class="nav-text">03 感知机策略</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#定义损失函数"><span class="nav-number">3.0.0.1.</span> <span class="nav-text">定义损失函数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#损失函数最小化"><span class="nav-number">3.0.0.2.</span> <span class="nav-text">损失函数最小化</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#04-感知机算法"><span class="nav-number">4.</span> <span class="nav-text">04 感知机算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#05-总结"><span class="nav-number">5.</span> <span class="nav-text">05 总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -571,7 +671,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共3.1k字</span>
+  <span class="post-count">博客全站共7.1k字</span>
 </div>
         
 

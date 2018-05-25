@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="统计学习方法," />
 
 
 
@@ -79,14 +79,30 @@
 
 
 
+<meta name="description" content="之前我们学习了一种分类方法——K近邻法(KNN)，今天我们再学习一种更常用的分类方法，朴素贝叶斯法(Naive Bayes)">
+<meta name="keywords" content="统计学习方法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="统计学习方法 | 朴素贝叶斯法">
 <meta property="og:url" content="http://yoursite.com/2018/05/25/统计学习方法-朴素贝叶斯法/index.html">
 <meta property="og:site_name" content="DengSha">
+<meta property="og:description" content="之前我们学习了一种分类方法——K近邻法(KNN)，今天我们再学习一种更常用的分类方法，朴素贝叶斯法(Naive Bayes)">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-25T06:55:29.622Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-784876ce02ed4b0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-9a2e2d1a2501d3f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-87e90cb65e0b2dc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-7925a9c09ec7460d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-c7ba7d5ddcdb94eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-b9cc5c142f7d5256.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-e2f134b8527393a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-beae24f45f080f8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-a29f06461a90977d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-9c63df018116e57f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-af315cf18beb7398.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-05-25T07:04:01.928Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计学习方法 | 朴素贝叶斯法">
+<meta name="twitter:description" content="之前我们学习了一种分类方法——K近邻法(KNN)，今天我们再学习一种更常用的分类方法，朴素贝叶斯法(Naive Bayes)">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4263204-784876ce02ed4b0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -290,7 +306,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  0
+                  1,129
                 </span>
               
 
@@ -306,12 +322,16 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  4
                 </span>
               
             </div>
           
 
+          
+              <div class="post-description">
+                  之前我们学习了一种分类方法——K近邻法(KNN)，今天我们再学习一种更常用的分类方法，朴素贝叶斯法(Naive Bayes)
+              </div>
           
 
         </div>
@@ -327,7 +347,75 @@
       
 
       
-        
+        <p><img src="https://upload-images.jianshu.io/upload_images/4263204-784876ce02ed4b0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h4 id="01-分类方法"><a href="#01-分类方法" class="headerlink" title="01 分类方法"></a>01 分类方法</h4><p>之前我们学习了一种分类方法——<a href="https://www.jianshu.com/p/73a0a3b229e6" target="_blank" rel="noopener">K近邻法(KNN)</a>，今天我们再学习一种更常用的分类方法</p>
+<blockquote>
+<p>朴素贝叶斯法</p>
+</blockquote>
+<p>这里，我们先区分一下“分类”和“聚类”</p>
+<blockquote>
+<ul>
+<li><p>分类的目的是学会一个分类函数或分类模型(也常常称作分类器 )，该模型能把新输入的数据映射到给定类别中的某一个类中。</p>
+</li>
+<li><p>聚类(clustering)是指根据“物以类聚”原理，将本身没有类别的样本聚集成不同的组(簇)，并且对每一个这样的簇进行描述的过程。它的目的是使得属于同一个簇的样本之间应该彼此相似，而不同簇的样本应该足够不相似。</p>
+</li>
+</ul>
+</blockquote>
+<p>我们在上一篇文章中讲到的K-Means就属于聚类算法，KNN、朴素贝叶斯则属于分类方法。</p>
+<p>下面详细讲解朴素贝叶斯方法。</p>
+<h4 id="02-相关概念"><a href="#02-相关概念" class="headerlink" title="02 相关概念"></a>02 相关概念</h4><p>学习朴素贝叶斯之前，先理清下面三个概念，要不然你的脑袋会晕掉的。</p>
+<ol>
+<li><p>先验概率<br>事件发生前的预判概率。可以是基于历史数据的统计，可以由背景常识得出，也可以是人的主观观点给出。一般都是单独事件概率，如P(X),P(Y)。</p>
+</li>
+<li><p>条件概率<br>事件发生后求的反向条件概率；或者说，基于先验概率求得的反向条件概率。表达形式与条件概率相同。如P(Y|X)</p>
+</li>
+<li><p>后验概率<br>一个事件发生后另一个事件发生的概率。一般的形式为P(X|Y)，表示Y发生的条件下X发生的概率。</p>
+</li>
+</ol>
+<h4 id="03-朴素贝叶斯"><a href="#03-朴素贝叶斯" class="headerlink" title="03 朴素贝叶斯"></a>03 朴素贝叶斯</h4><p><strong>基本假设</strong><br>朴素贝叶斯，英文叫Naive Bayes。</p>
+<p><strong>Naive？</strong></p>
+<p>那是有原因的，朴素贝叶斯对输入变量做了一个很强的假设——条件独立</p>
+<blockquote>
+<p><strong>条件独立</strong></p>
+<p>输入变量之间是相互独立的，没有概率依存关系。（若相互依存，那叫贝叶斯网络）</p>
+<p>即，用于分类的特征(xj)在类(y=ck)确定的条件下，都是相互独立的，即<br>P(X=x|Y=ck)=P(X1=x2,X2=x2…Xn=xn|Y=ck)<br>=P(X1=x1|Y=ck)P(X2=x2|Y=ck)…P(Xn=xn|Y=ck)</p>
+</blockquote>
+<p>就是这么个意思：<img src="https://upload-images.jianshu.io/upload_images/4263204-9a2e2d1a2501d3f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>贝叶斯公式</strong></p>
+<p>基本原理：P(X,Y)=P(Y|X)P(X)=P(X|Y)P(Y) =&gt; P(Y|X)=P(X|Y)P(Y)/P(X)</p>
+<p>于是对于后验概率P(Y|X)，有：<img src="https://upload-images.jianshu.io/upload_images/4263204-87e90cb65e0b2dc4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>朴素贝叶斯分类器</strong></p>
+<p>根据贝叶斯公式，朴素贝叶斯分类器就产生了：<br>y=f(x)=argmax(P(Y|X))</p>
+<p>一波公式变换和等价之后，得到了朴素贝叶斯分类器：<img src="https://upload-images.jianshu.io/upload_images/4263204-7925a9c09ec7460d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>这个分类器要做的就是，对于新输入x，计算所有可能的Y对应的后验概率P(Y|X)，认为后验概率最大的那个Y就是这个新输入x的类。</strong></p>
+<h4 id="04-朴素贝叶斯的参数估计方法"><a href="#04-朴素贝叶斯的参数估计方法" class="headerlink" title="04 朴素贝叶斯的参数估计方法"></a>04 朴素贝叶斯的参数估计方法</h4><p><strong>参数估计目的</strong></p>
+<p>根据上一节，朴素贝叶斯分类器其实就是先验概率P(Y)和条件概率P(X|Y)的乘积，要使用朴素贝叶斯分类器，就要估计先验概率P(Y=ck)和条件概率P(Xj=ajl|Y=ck)，这就是参数估计。</p>
+<p>常使用极大似然估计和贝叶斯估计去求这两个概率。</p>
+<p><strong>极大似然估计</strong></p>
+<ul>
+<li><p>先验概率<img src="https://upload-images.jianshu.io/upload_images/4263204-c7ba7d5ddcdb94eb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>条件概率<img src="https://upload-images.jianshu.io/upload_images/4263204-b9cc5c142f7d5256.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+</ul>
+<p><strong>贝叶斯估计</strong></p>
+<ul>
+<li><p>先验概率<img src="https://upload-images.jianshu.io/upload_images/4263204-e2f134b8527393a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p>条件概率<img src="https://upload-images.jianshu.io/upload_images/4263204-beae24f45f080f8c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+</ul>
+<p>上式的朗母达=1时，叫做——拉普拉斯平滑(Laplace smoothing)</p>
+<p><strong>相比于极大似然估计，贝叶斯估计可以处理有概率为0的情况，加入了Sj、K等参数，其中Sj是X的第i个参数的第j个特征可能的数值个数，K是Y可能的类别个数。</strong></p>
+<h4 id="05-朴素贝叶斯算法过程"><a href="#05-朴素贝叶斯算法过程" class="headerlink" title="05 朴素贝叶斯算法过程"></a>05 朴素贝叶斯算法过程</h4><p>在看下面这个算法过程的时候，建议你脑子里一直想着一个实例：垃圾邮件分类。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-a29f06461a90977d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>算法过程看完可能还是云里雾里，我们举个例子说明吧。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-9c63df018116e57f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-af315cf18beb7398.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h4 id="06-总结"><a href="#06-总结" class="headerlink" title="06 总结"></a>06 总结</h4><p>今天我们学习了另一种分类方法：朴素贝叶斯法，它实现简单，学习和预测的效率较高，是一种很常用的分类方法，比如垃圾邮件分类、商品映射到行业体系等。</p>
+<p>注意区分分类和聚类方法。</p>
+<p>下期我们将学习另一种分类方法——决策树，敬请期待~~</p>
+
       
     </div>
     
@@ -375,6 +463,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/统计学习方法/" rel="tag"><i class="fa fa-tag"></i> 统计学习方法</a>
+          
+        </div>
       
 
       
@@ -445,8 +539,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -520,6 +623,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#01-分类方法"><span class="nav-number">1.</span> <span class="nav-text">01 分类方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#02-相关概念"><span class="nav-number">2.</span> <span class="nav-text">02 相关概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#03-朴素贝叶斯"><span class="nav-number">3.</span> <span class="nav-text">03 朴素贝叶斯</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#04-朴素贝叶斯的参数估计方法"><span class="nav-number">4.</span> <span class="nav-text">04 朴素贝叶斯的参数估计方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#05-朴素贝叶斯算法过程"><span class="nav-number">5.</span> <span class="nav-text">05 朴素贝叶斯算法过程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#06-总结"><span class="nav-number">6.</span> <span class="nav-text">06 总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -567,7 +686,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共3.1k字</span>
+  <span class="post-count">博客全站共7.1k字</span>
 </div>
         
 

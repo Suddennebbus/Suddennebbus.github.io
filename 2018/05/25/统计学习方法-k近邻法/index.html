@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="统计学习方法," />
 
 
 
@@ -79,14 +79,34 @@
 
 
 
+<meta name="description" content="详细讲解KNN算法，再与K-Means、K-Means++算法进行简单对比">
+<meta name="keywords" content="统计学习方法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="统计学习方法 | k近邻法">
 <meta property="og:url" content="http://yoursite.com/2018/05/25/统计学习方法-k近邻法/index.html">
 <meta property="og:site_name" content="DengSha">
+<meta property="og:description" content="详细讲解KNN算法，再与K-Means、K-Means++算法进行简单对比">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-25T06:55:21.225Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-d64e406b8eb190ad.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-17794c4d8dcc7fad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-7ef1a37964c0c717.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-abc722692691d222.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-70b69478455915fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-834e4bdee4e8181d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-a59b0fa7440a63e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-5cb1c5c586b6c500.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-a11e60f7fcacb5bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-73a62534ee254c35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-b46f49f7001afb2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-586f6f61f61169fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-46ce632efb0248c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-2ec2b2491a1d75c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4263204-869923f8fec236b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-05-25T07:04:33.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="统计学习方法 | k近邻法">
+<meta name="twitter:description" content="详细讲解KNN算法，再与K-Means、K-Means++算法进行简单对比">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4263204-d64e406b8eb190ad.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -290,7 +310,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  0
+                  1,849
                 </span>
               
 
@@ -306,12 +326,16 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  6
                 </span>
               
             </div>
           
 
+          
+              <div class="post-description">
+                  详细讲解KNN算法，再与K-Means、K-Means++算法进行简单对比
+              </div>
           
 
         </div>
@@ -327,7 +351,132 @@
       
 
       
-        
+        <p><img src="https://upload-images.jianshu.io/upload_images/4263204-d64e406b8eb190ad.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h4 id="01-分类需求"><a href="#01-分类需求" class="headerlink" title="01 分类需求"></a>01 分类需求</h4><p><strong>K近邻法（KNN）是一种基本的分类与回归方法</strong></p>
+<blockquote>
+<p>分类这种需求，渗透到我们生活的方方面面：</p>
+<ul>
+<li>根据学生德智体美成绩，将学生分为几类</li>
+<li>根据一个县城的GDP、人口密度等数据，将全国的县城分为多个类别</li>
+<li>根据客户的信用、收入、生活习惯将客户分为多个类别</li>
+<li>……</li>
+</ul>
+</blockquote>
+<p>分类算法可以帮助我们完成这些繁琐的操作，并根据我们的要求不断修正分类结果。</p>
+<p>分类算法其实蛮多的，这里顺着书本顺序，详细讲解KNN算法，再与K-Means、K-Means++算法进行简单对比。</p>
+<h4 id="02-KNN算法"><a href="#02-KNN算法" class="headerlink" title="02 KNN算法"></a>02 KNN算法</h4><p>k近邻法是这样一个过程：</p>
+<blockquote>
+<p>给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最邻近的k个实例，这k个实例的多数属于某个类（多数表决argmax），就把该输入实例分为这个类。</p>
+</blockquote>
+<p>过程其实很好理解，描述成可量化的算法，就是这样的：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-17794c4d8dcc7fad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p>KNN是一种懒惰算法，平时不好好学习，考试（对测试样本分类）时才临阵磨枪（临时去找k个近邻）。</p>
+<p>懒惰的后果：构造模型很简单，但在对测试样本分类的开销大，因为要扫描全部训练样本并计算距离。</p>
+<p>理解算法后，我们来看看k近邻法的优缺点：</p>
+<blockquote>
+<p>优点：易于实现，无需估计参数，无需训练，支持增量学习，能对超多边形的复杂决策空间建模</p>
+<p>缺点：计算量较大，分析速度慢（因为要扫描全部训练样本并计算距离）</p>
+</blockquote>
+<h4 id="03-KNN-vs-K-Means-vs-K-Means"><a href="#03-KNN-vs-K-Means-vs-K-Means" class="headerlink" title="03 KNN vs K-Means vs K-Means++"></a>03 KNN vs K-Means vs K-Means++</h4><p>开头我们说到，分类算法很多，KNN只是其中一种，下面我们将KNN算法与K-Means、K-Means++进行对比，便于我们更好地理解算法。</p>
+<p><strong>KNN</strong><br>给定一个训练数据集，对新的输入实例，在训练数据集中找到与该实例最邻近的k个实例，这k个实例的多数属于某个类（多数表决argmax），就把该输入实例分为这个类。</p>
+<p><strong>K-Means</strong><br>不断地聚类<-->划分过程<br>（1）对于一组数据集，任意选取k个点作为质心，将数据集中的点归为离其最近的质心一类，此时数据集被划分为k个类；<br>（2）对这k个类，重新寻找各类的质心；<br>（3）根据新产生的质心，按照（1）继续聚类，然后再根据聚类重新计算各类质心，直到质心不再改变，分类完成。</--></p>
+<p>下面的图可以很直观地展示整个分类过程</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-7ef1a37964c0c717.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="需要注意的是，此图示展示的K-Means聚类过程，
+第一步选取的红蓝两点质心是错的，质心应该是训练数据集中的点，后面的步骤没有问题"></p>
+<p><strong>K-Means++</strong><br>与K-Means算法相同，除了第一步初始质心的选择：选择初始质心时并不是随机选择，而是选择尽量相互分离的质心，即，下一个质心点总是离上一个质心点较远的点。</p>
+<h4 id="04-KNN三要素"><a href="#04-KNN三要素" class="headerlink" title="04 KNN三要素"></a>04 KNN三要素</h4><p><strong>距离度量、k值、分类决策规则</strong>，是k近邻法地三要素，下面分别介绍。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-abc722692691d222.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>距离度量</strong><br>衡量特征空间中两个实例点的距离，度量方法一边用Lp距离，p取不同值时，分别有不同地名称，常用欧氏距离作为距离度量。</p>
+<ul>
+<li><p><strong>Lp距离</strong><img src="https://upload-images.jianshu.io/upload_images/4263204-70b69478455915fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p><strong>欧氏距离(p=2)</strong> <img src="https://upload-images.jianshu.io/upload_images/4263204-834e4bdee4e8181d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p><strong>曼哈顿距离(p=1)</strong> <img src="https://upload-images.jianshu.io/upload_images/4263204-a59b0fa7440a63e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p><strong>p无穷</strong> <img src="https://upload-images.jianshu.io/upload_images/4263204-5cb1c5c586b6c500.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+</ul>
+<p>不同的距离度量，得到的实例点之间的距离是不同的，下面的图给出了二维空间中，p取不同值时，与原点的Lp距离为1的点的集合图形，可以看到，欧氏距离对应的是圆。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-a11e60f7fcacb5bf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<p><strong>k值</strong></p>
+<blockquote>
+<p>k值得选择，反映了对近似误差与估计误差之间的权衡。</p>
+</blockquote>
+<ul>
+<li><p><strong>近似误差</strong><br>类比于训练误差，关注训练集。近似误差越小，说明模型对训练集的预测越好，但近似误差过小容易出现过拟合，降低模型对于测试集的预测准确性。</p>
+</li>
+<li><p><strong>估计误差</strong><br>类比于测试误差，关注测试集。估计误差越小，说明模型对未知数据预测越好，模型越接近真实模型，过小的近似误差会导致模型过拟合，使得模型对于未知数据的预测变差（估计误差变大）</p>
+</li>
+<li><p><strong>k值过小</strong></p>
+<ul>
+<li>近似误差会减小，估计误差会增大</li>
+<li>易产生过拟合</li>
+<li>噪声敏感：如果邻近的实例点恰好是噪声，预测就会出错。</li>
+</ul>
+</li>
+<li><p>k值过大</p>
+<ul>
+<li>可以减少估计误差，但近似误差会增大</li>
+<li>极端情况，k=样本点数N，无论输入实例如何，都将被简单归为训练集中最多的类，忽略了大量有用信息</li>
+</ul>
+</li>
+</ul>
+<p><strong>分类决策规则</strong></p>
+<p>k近邻法中得分类决策规则，常用多数表决法，当然，为了弱化k值的影响，还可以采用加权表决法。</p>
+<ul>
+<li><p><strong>多数表决</strong></p>
+<ul>
+<li>由输入实例的k个邻近的训练实例中的多数类决定输入实例的类</li>
+<li>不考虑距离加权影响，每个投票权重都为1</li>
+</ul>
+</li>
+<li><p><strong>加权表决</strong></p>
+<ul>
+<li>由输入实例的k个邻近的训练实例中的多数类加权决定输入实例的类<br> -即根据距离的远近，对近邻的投票进行加权，距离越近则权重越大（权重为距离平方的倒数）</li>
+</ul>
+</li>
+</ul>
+<p>为什么要使用多数表决法呢，这里给出多数表决法的直观解释，这个解释我给满分！</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-73a62534ee254c35.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<h4 id="05-kd树（二叉树）"><a href="#05-kd树（二叉树）" class="headerlink" title="05 kd树（二叉树）"></a>05 kd树（二叉树）</h4><p>了解了k近邻法后，你应该会产生这样的疑惑：</p>
+<blockquote>
+<p>如何对训练数据进行快速k近邻搜索？</p>
+</blockquote>
+<p>难道用线性扫描么？</p>
+<blockquote>
+<p>要计算输入实例与训练集每一个实例的距离，当训练集很大时，计算非常耗时，<strong>不可取</strong></p>
+</blockquote>
+<p>面对大数据量的训练集，人们想出了一个好办法提高搜索效率：</p>
+<blockquote>
+<p>使用特殊的数据结构存储训练数据，以减少计算距离的次数，这就是——kd树</p>
+</blockquote>
+<p>下面结合示例，讲解如何构造kd树以及如何搜索kd树</p>
+<ul>
+<li><p><strong>构造kd树</strong><br><img src="https://upload-images.jianshu.io/upload_images/4263204-b46f49f7001afb2b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p><strong>示例-构造kd树</strong><br><img src="https://upload-images.jianshu.io/upload_images/4263204-586f6f61f61169fe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+</ul>
+<p>一波操作之后，得到的kd树直观理解长成这样：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4263204-46ce632efb0248c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+<ul>
+<li><p><strong>搜索kd树</strong><br><img src="https://upload-images.jianshu.io/upload_images/4263204-2ec2b2491a1d75c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+<li><p><strong>示例-搜索kd树</strong><br><img src="https://upload-images.jianshu.io/upload_images/4263204-869923f8fec236b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt=""></p>
+</li>
+</ul>
+<h4 id="06-总结"><a href="#06-总结" class="headerlink" title="06 总结"></a>06 总结</h4><p>本文详细讲解了KNN算法，并与K-Means、K-Means++算法进行了对比，给出了KNN算法的三要素，最后介绍了便于KNN算法实现的kd树的数据存储结构。</p>
+<ul>
+<li><p>k近邻法过程<br>对给定的训练实例点和输入实例点，首先确定输入实例点的k个最近邻训练实例点，然后利用这k个训练实例点的类的多数（距离加权）来预测输入实例点的类</p>
+</li>
+<li><p>k近邻法三要素<br>距离度量、k值选择、分类决策规则</p>
+</li>
+<li><p>kd树<br>一种对k维空间中的实例点进行存储，以便对其进行快速检索的树形数据结构（这里的k维与k近邻的k意义不同）</p>
+</li>
+</ul>
+<p><strong>下期将详细介绍另一种常用的分类方法：朴素贝叶斯，敬请期待~~</strong></p>
+
       
     </div>
     
@@ -375,6 +524,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/统计学习方法/" rel="tag"><i class="fa fa-tag"></i> 统计学习方法</a>
+          
+        </div>
       
 
       
@@ -449,8 +604,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -524,6 +688,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#01-分类需求"><span class="nav-number">1.</span> <span class="nav-text">01 分类需求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#02-KNN算法"><span class="nav-number">2.</span> <span class="nav-text">02 KNN算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#03-KNN-vs-K-Means-vs-K-Means"><span class="nav-number">3.</span> <span class="nav-text">03 KNN vs K-Means vs K-Means++</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#04-KNN三要素"><span class="nav-number">4.</span> <span class="nav-text">04 KNN三要素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#05-kd树（二叉树）"><span class="nav-number">5.</span> <span class="nav-text">05 kd树（二叉树）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#06-总结"><span class="nav-number">6.</span> <span class="nav-text">06 总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -571,7 +751,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共3.1k字</span>
+  <span class="post-count">博客全站共7.1k字</span>
 </div>
         
 
