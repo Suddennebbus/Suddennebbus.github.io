@@ -2045,7 +2045,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b68f88;
+  background: #69615b;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2884,7 +2884,7 @@ embed {
   display: inline-block;
 }
 .post {
-  margin-top: 60px;
+  margin-top: 20px;
   margin-bottom: 20px;
   padding: 25px;
   -webkit-box-shadow: 0 0 5px rgba(202,203,203,0.7);
